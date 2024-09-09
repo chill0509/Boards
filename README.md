@@ -15,9 +15,9 @@ CREATE TABLE Boards (
 
 To run:
 React App: boards-app
-  npm start
+	• npm start
 Asp project:
-  dotnet run
+	• dotnet run
 
 
 Let’s go through each step in detail, focusing on the core concepts, tools, and code examples to help you understand how to build a website like the Boards App from scratch.
@@ -26,31 +26,31 @@ Let’s go through each step in detail, focusing on the core concepts, tools, an
 
 What You’ll Do:
 
-	•	Set up a basic development environment.
-	•	Choose your front-end and back-end frameworks.
+		•	Set up a basic development environment.
+		•	Choose your front-end and back-end frameworks.
 
 Tools:
 
-	•	Code Editor: Use a code editor like Visual Studio Code.
-	•	Node.js: Install Node.js for running JavaScript on the server.
-	•	NPM: Node Package Manager, comes with Node.js, used to install libraries and packages.
+		•	Code Editor: Use a code editor like Visual Studio Code.
+		•	Node.js: Install Node.js for running JavaScript on the server.
+		•	NPM: Node Package Manager, comes with Node.js, used to install libraries and packages.
 
 Steps:
 
 	1.	Install Node.js:
-	•	Download and install Node.js from nodejs.org.
-	•	Verify the installation by running node -v in your terminal. You should see the version number.
+		•	Download and install Node.js from nodejs.org.
+		•	Verify the installation by running node -v in your terminal. You should see the version number.
 	2.	Initialize a New Project:
-	•	Open your terminal and navigate to the folder where you want to create your project.
-	•	Run npm init -y to create a package.json file, which keeps track of your project’s dependencies and scripts.
+		•	Open your terminal and navigate to the folder where you want to create your project.
+		•	Run npm init -y to create a package.json file, which keeps track of your project’s dependencies and scripts.
 	3.	Install React:
-	•	Run npx create-react-app boards-app to create a new React project. This will set up a basic structure for your front-end.
-	•	Navigate to the project folder: cd boards-app.
+		•	Run npx create-react-app boards-app to create a new React project. This will set up a basic structure for your front-end.
+		•	Navigate to the project folder: cd boards-app.
 	4.	Set Up Express.js (for the back-end):
-	•	Run npm install express to install Express.js, a web framework for Node.js.
-	•	Create a new folder called server in your project.
-	•	Inside the server folder, create a file named index.js.
-	•	Add the following code to index.js:
+		•	Run npm install express to install Express.js, a web framework for Node.js.
+		•	Create a new folder called server in your project.
+		•	Inside the server folder, create a file named index.js.
+		•	Add the following code to index.js:
 
 const express = require('express');
 const app = express();
@@ -81,10 +81,10 @@ Tools:
 Steps:
 
 	1.	Set Up Fabric.js:
-	•	Install Fabric.js in your React app: npm install fabric.
+		•	Install Fabric.js in your React app: npm install fabric.
 	2.	Create the Canvas Component:
-	•	In your React app, create a new component called BoardCanvas.js.
-	•	Inside BoardCanvas.js, set up the Fabric.js canvas:
+		•	In your React app, create a new component called BoardCanvas.js.
+		•	Inside BoardCanvas.js, set up the Fabric.js canvas:
 
 import React, { useEffect, useRef } from 'react';
 import { fabric } from 'fabric';
@@ -117,10 +117,10 @@ const BoardCanvas = () => {
 export default BoardCanvas;
 
 
-	•	Import and use BoardCanvas in your App.js.
+		•	Import and use BoardCanvas in your App.js.
 
 	3.	Add Shapes, Text, and Drawing Tools:
-	•	Explore the Fabric.js documentation to add more tools and features, like freehand drawing or adding images.
+		•	Explore the Fabric.js documentation to add more tools and features, like freehand drawing or adding images.
 
 3. Real-Time Collaboration
 
@@ -164,7 +164,7 @@ server.listen(5000, () => {
 
 
 	3.	Connect the Client to Socket.IO:
-	•	In your React app, connect to the server:
+		•	In your React app, connect to the server:
 
 import io from 'socket.io-client';
 const socket = io('http://localhost:5000');
@@ -175,8 +175,8 @@ socket.on('connect', () => {
 
 
 	4.	Real-Time Updates:
-	•	Use Socket.IO to send and receive updates when users draw or add elements on the board.
-	•	Broadcast changes to all connected clients, so everyone sees the updates in real-time.
+		•	Use Socket.IO to send and receive updates when users draw or add elements on the board.
+		•	Broadcast changes to all connected clients, so everyone sees the updates in real-time.
 
 4. Board Management
 
@@ -191,8 +191,8 @@ Tools:
 Steps:
 
 	1.	Set Up React Router:
-	•	Install React Router: npm install react-router-dom.
-	•	Set up basic routes in your App.js:
+		•	Install React Router: npm install react-router-dom.
+		•	Set up basic routes in your App.js:
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './Dashboard';
@@ -213,10 +213,10 @@ export default App;
 
 
 	2.	Create the Dashboard Component:
-	•	Create a new Dashboard.js component where users can create and view boards.
-	•	Use state to manage the list of boards.
+		•	Create a new Dashboard.js component where users can create and view boards.
+		•	Use state to manage the list of boards.
 	3.	Link to Individual Boards:
-	•	In your Dashboard.js, create links to individual boards using React Router.
+		•	In your Dashboard.js, create links to individual boards using React Router.
 
 5. User Authentication
 
@@ -232,13 +232,13 @@ Tools:
 Steps:
 
 	1.	Set Up Passport.js:
-	•	Install Passport.js: npm install passport passport-jwt.
-	•	Configure Passport in your server to handle user authentication.
+		•	Install Passport.js: npm install passport passport-jwt.
+		•	Configure Passport in your server to handle user authentication.
 	2.	Implement Registration and Login:
-	•	Create routes for user registration and login.
-	•	Use JWT to generate tokens when a user logs in successfully.
+		•	Create routes for user registration and login.
+		•	Use JWT to generate tokens when a user logs in successfully.
 	3.	Protect Routes:
-	•	Protect certain routes (e.g., creating a new board) so that only authenticated users can access them.
+		•	Protect certain routes (e.g., creating a new board) so that only authenticated users can access them.
 
 6. Permissions and Sharing
 
@@ -253,10 +253,10 @@ Tools:
 Steps:
 
 	1.	Store Permissions:
-	•	Design your database schema to store information about who owns a board and who can view/edit it.
+		•	Design your database schema to store information about who owns a board and who can view/edit it.
 	2.	Implement Sharing Functionality:
-	•	Create a UI for users to share boards via email or a link.
-	•	Implement backend logic to check permissions when a user tries to access a shared board.
+		•	Create a UI for users to share boards via email or a link.
+		•	Implement backend logic to check permissions when a user tries to access a shared board.
 
 7. Versioning and Exporting
 
@@ -272,11 +272,11 @@ Tools:
 Steps:
 
 	1.	Store Board Versions:
-	•	When a user makes a change, save a new version of the board in the database.
-	•	Allow users to revert to previous versions.
+		•	When a user makes a change, save a new version of the board in the database.
+		•	Allow users to revert to previous versions.
 	2.	Export Board:
-	•	Use html2canvas to capture the board as an image.
-	•	Provide an option to download the image or print it.
+		•	Use html2canvas to capture the board as an image.
+		•	Provide an option to download the image or print it.
 
 8. Testing
 
@@ -292,11 +292,11 @@ Tools:
 Steps:
 
 	1.	Set Up Jest:
-	•	Install Jest: npm install jest.
-	•	Create test files and write unit tests for your components and functions.
+		•	Install Jest: npm install jest.
+		•	Create test files and write unit tests for your components and functions.
 	2.	Run Tests:
-	•	Run your tests with npm test.
-	•	Fix any issues that arise.
+		•	Run your tests with npm test.
+		•	Fix any issues that arise.
 
 9. Deployment
 
@@ -312,16 +312,13 @@ Tools:
 Steps:
 
 	1.	Containerize Your App:
-	•	Create a
-
-Dockerfile for your app.
-
-	•	Build the Docker image: docker build -t boards-app ..
-	•	Run the image locally to test it: docker run -p 5000:5000 boards-app.
+		•	Create a Dockerfile for your app.
+		•	Build the Docker image: docker build -t boards-app ..
+		•	Run the image locally to test it: docker run -p 5000:5000 boards-app.
 
 	2.	Deploy to the Cloud:
-	•	Push your Docker image to a cloud service.
-	•	Set up your server and deploy the app.
+		•	Push your Docker image to a cloud service.
+		•	Set up your server and deploy the app.
 
 10. Post-Launch
 
@@ -336,9 +333,8 @@ Tools:
 Steps:
 
 	1.	Monitor Performance:
-	•	Set up monitoring to track how users are interacting with your app and identify any issues.
+		•	Set up monitoring to track how users are interacting with your app and identify any issues.
 	2.	Plan Updates:
-	•	Gather feedback from users.
-	•	Plan new features and improvements.
+		•	Gather feedback from users.
+		•	Plan new features and improvements.
 
-This guide should give you a solid foundation to start building a collaborative boards app from scratch. Let me know if you want to dive deeper into any specific part!
