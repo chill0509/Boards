@@ -4,11 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using BoardsApi.Data;
 using BoardsApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace BoardsApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BoardsController : ControllerBase
