@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BoardCanvas from './components/BoardCanvas';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Dashboard from './components/Dashboard';
 import * as signalR from '@microsoft/signalr';
 import './App.css';
 
