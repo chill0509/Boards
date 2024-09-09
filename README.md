@@ -7,9 +7,19 @@ CREATE DATABASE BoardsApp;
 USE BoardsApp;
 CREATE TABLE Boards (
     BoardId INT PRIMARY KEY IDENTITY(1,1),
-    BoardName NVARCHAR(100),
-    ConvasState TEXT,
-    LastModified DATETIME
+    BoardName NVARCHAR(100) NOT NULL,
+    OwnerId NVARCHAR(450) NOT NULL,
+    CanvasState TEXT,
+    LastModified DATETIME,
+    FOREIGN KEY (OwnerId) REFERENCES AspNewUsers(Id)
+);
+CREATE TABLE BoardPermissions (
+    PermissionId INT PRIMARY KEY IDENTITY,
+    BoardId INT NOT NULL,
+    UserId NVARCHAR(450) NOT NULL,
+    CanEdit BUT NOT NULL, -- Permission to edit or view only
+    FOREIGN KEY (BoardId) REFERENCES Boards(BoardId),
+    FOREIGN KEY (UserId) REFERENCES AspNetUsers(Id)
 );
 
 
