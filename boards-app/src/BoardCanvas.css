@@ -1,0 +1,18 @@
+#board-container {
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.export-buttons {
+    margin-top: 20px;
+}
+
+.export-buttons button {
+    margin-right: 10px;
+}
