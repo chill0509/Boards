@@ -1,0 +1,28 @@
+/* Dashboard container */
+.dashboard {
+    padding: 20px;
+}
+
+/* List of boards */
+.boards-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Individual board items */
+.boards-list li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Links to boards */
+.boards-list li a {
+    text-decoration: none;
+    color: #007bff;
+}
+.boards-list li a:hover {
+    text-decoration: underline;
+}
