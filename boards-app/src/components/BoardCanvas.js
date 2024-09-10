@@ -1,8 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
+import { fabric } from 'fabric';
 import * as signalR from '@microsoft/signalr';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import './BoardCanvas.css';
 
 const BoardCanvas = () => {
+    const boardRef = useRef(null); // this ref points to the html element of the board
     const canvasRef = useRef(null);
     const [canvas, setCanvas] = useState(null);
     const [boards, setBoards] = useState([]);
@@ -11,15 +16,14 @@ const BoardCanvas = () => {
     const [boardContent, setBoardContent] = useState([]); // hold current board's content
     const fabric = require('fabric').fabric;
 
-/*     useEffect(() => {
-        const initCanvas = new fabric.Canvas(canvasRef.current, {
-            width: 800,
-            height: 600,
-            backgroundColor: 'white',
-        });
-        setCanvas(initCanvas);
-        fetchBoards();
-    }, []); */
+    useEffect(() => {
+        if (boardRef.current) {
+            console.log("Board element: ", boardRef.current);
+            
+            // for example, you can set a background color or style
+            boardRef.current.style.backgroundColor = 'lightblue';
+        }
+    }, []); // empty dependency array to run only on mount
 
     useEffect(() => {
         const canvas = new fabric.fabric.Canvas('boardCanvas', {
@@ -124,9 +128,48 @@ const BoardCanvas = () => {
         }
     };
 
+    // Function to capture the board as an image
+    const exportAsImage = () => {
+        const boardElement = boardRef.current;
+
+        html2canvas(boardElement).then(canvas => {
+            const imageData = canvas.toDataURL("image/png");
+            const link = document.createElement('a');
+            link.href = imageData;
+            link.download = 'board.png';
+            link.click();
+        });
+    };
+
+    // Function to export the board as PDF
+    const exportAsPDF = () => {
+        const boardElement = boardRef.current;
+
+        html2canvas(boardElement).then(canvas => {
+            const imgData = canvas.toDataURL("image/png");
+            const pdf = new jsPDF('landscape');
+            const imgWidth = 210; // A4 size papaer width in mm
+            const imgHeight = canvas.height * imgWidth / canvas.width; // Scale the image to fit the page
+
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save('board.pdf');
+        });
+    };
+
     //return <canvas ref={canvasRef} />;
     return (
         <div>
+            {/* The board content (canvas, div, etc.) */}
+
+            <div ref={boardRef} id="board-container" style={{ width: '800px', height: '600px', background: 'lightgray'}}>
+                {/* Your board's content, shapes, text, etc. */}
+                <h2>Board Content</h2>
+            </div>
+
+            {/* Export buttons */}
+            <button onClick={exportAsImage}>Export as Image</button>
+            <button onClick={exportAsPDF}>Export as PDF</button>
+
             <button onClick={() => createNewBoard(prompt("Enter board name:"))}>New Board</button>
             <button onClick={saveBoard}>Save Board</button>
 
