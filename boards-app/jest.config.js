@@ -7,5 +7,6 @@ module.exports = {
     testEnvironment: 'jsdom', // use jsdom for testing react components - sets the test environment to be like a browser
     setupFilesAfterEnv: ['@testing-library/jest-dom'],
     //setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
+    transformIgnorePatterns: ['/node_modules/(?!(axios)/)',], // tell Jest to transform axios module
 };
 

@@ -7,8 +7,8 @@ import jsPDF from 'jspdf';
 import './BoardCanvas.css';
 
 const BoardCanvas = () => {
-    const boardRef = useRef(null); // this ref points to the html element of the board
-    const canvasRef = useRef(null);
+    const boardRef = useRef<BoardCanvas>(null); // this ref points to the html element of the board
+    const canvasRef = useRef<BoardCanvas>(null);
     const [canvas, setCanvas] = useState(null);
     const [boards, setBoards] = useState([]);
     const [selectedBoardId, setSelectedBoardId] = useState(null);
@@ -26,16 +26,15 @@ const BoardCanvas = () => {
     }, []); // empty dependency array to run only on mount
 
     useEffect(() => {
-        const canvas = new fabric.fabric.Canvas('boardCanvas', {
-            width: 800,
-            height: 600,
-            backgroundColor: 'white'
-        });
-        
-        return () => {
-            canvas.dispose(); // clean up on component unmount
-        };
-    }, []);
+        if (canvasRef.current && !canvas) {
+            const newCanvas = new fabric.Canvas(canvasRef.current);
+            setCanvas(newCanvas); // set the canvas in state
+            
+            return () => {
+                newCanvas.dispose(); // clean up on component unmount
+            };
+        }
+    }, [canvas]);
 
     useEffect(() => {
         // setup signalR connection
@@ -161,7 +160,7 @@ const BoardCanvas = () => {
         <div>
             {/* The board content (canvas, div, etc.) */}
 
-            <div ref={boardRef} id="board-container" style={{ width: '800px', height: '600px', background: 'lightgray'}}>
+            <div ref={canvasRef} id="boardCanvas" style={{ width: '800px', height: '600px', background: 'white'}}>
                 {/* Your board's content, shapes, text, etc. */}
                 <h2>Board Content</h2>
             </div>
@@ -181,7 +180,7 @@ const BoardCanvas = () => {
                 ))}
             </ul>
             
-            <canvas id="boardCanvas" ref={canvasRef} width={800} height={600}></canvas>
+            <canvas id="boardCanvas" ref={canvasRef} width={800} height={600} data-testid="boardCanvas"></canvas>
         </div>
     );
 };
